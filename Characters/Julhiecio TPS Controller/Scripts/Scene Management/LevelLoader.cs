@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace JUTPS.Utilities
 {
-    [AddComponentMenu("JU TPS/Scene Management/Scene Loader")]
+    [AddComponentMenu("JU TPS/Scene Management/Level Loader")]
     public class LevelLoader : MonoBehaviour
     {
         public string LevelName = "Sample Scene";
