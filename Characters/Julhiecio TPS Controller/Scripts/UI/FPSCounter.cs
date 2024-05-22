@@ -18,8 +18,8 @@ namespace JUTPS.Utilities
         {
             if (FPSText != null)
             {
-                FPSText.text = GetFrameRate() + "FPS";
-                FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate() / 60f);
+                FPSText.text = GetFrameRate().ToString();
+                FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate() * 0.16667f);  // 1 / 60.0f
             }
         }
         /// <summary>
@@ -28,7 +28,7 @@ namespace JUTPS.Utilities
         /// <returns></returns>
         public static int GetFrameRate()
         {
-            int fps = (int)(1f / Time.unscaledDeltaTime);
+            int fps = (int)(1.0f / Time.unscaledDeltaTime);
             return fps;
         }
     }
