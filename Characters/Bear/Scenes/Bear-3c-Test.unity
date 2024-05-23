@@ -147,26 +147,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 14481989093003394, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-      propertyPath: CapsuleToResize
-      value: 
-      objectReference: {fileID: 816946012305610072}
-    - target: {fileID: 1587664494264625492, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66ee76c53725a4f8e88853eddd8448dd, type: 2}
-    - target: {fileID: 1587664494264625492, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66ee76c53725a4f8e88853eddd8448dd, type: 2}
-    - target: {fileID: 2409065685238667090, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 50645319738d14df3b0a51004794a909, type: 2}
-    - target: {fileID: 2409065685238667090, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66ee76c53725a4f8e88853eddd8448dd, type: 2}
     - target: {fileID: 3638985736063943814, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
       propertyPath: m_Name
       value: Bear
@@ -211,20 +191,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6112591891859341413, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7add7eb40f1084e41a5e2c8bccf46466, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
---- !u!136 &816946012305610072 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 5987463595202178526, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
-  m_PrefabInstance: {fileID: 816946012305610071}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1590115843448044471
 PrefabInstance:
   m_ObjectHideFlags: 0
