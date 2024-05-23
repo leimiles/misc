@@ -128,6 +128,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4164587841600249404, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
   m_PrefabInstance: {fileID: 816946012305610071}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452694852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4948592387166594329, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
+  m_PrefabInstance: {fileID: 816946012305610071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2f1b4d5da6234438ceca64fb2aa3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &816946012305610071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,6 +147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 14481989093003394, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
+      propertyPath: CapsuleToResize
+      value: 
+      objectReference: {fileID: 816946012305610072}
     - target: {fileID: 1587664494264625492, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -205,6 +220,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
+--- !u!136 &816946012305610072 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5987463595202178526, guid: 5f3cb4a0c677e4a43a5d1a7ba007bd04, type: 3}
+  m_PrefabInstance: {fileID: 816946012305610071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1590115843448044471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -213,6 +233,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1776620194207650755, guid: 763b11cd7e0664efb81dd2dfefb55a6c, type: 3}
+      propertyPath: PlayerCharacter
+      value: 
+      objectReference: {fileID: 1452694852}
     - target: {fileID: 1980722060720475555, guid: 763b11cd7e0664efb81dd2dfefb55a6c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
