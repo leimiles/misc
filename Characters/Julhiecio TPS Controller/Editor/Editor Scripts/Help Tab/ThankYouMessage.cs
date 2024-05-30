@@ -18,13 +18,13 @@ namespace JUTPS.CustomEditors
             {
                 if (EditorPrefs.GetBool("JUTPS_NeverShowThankYouMessage") == false && EditorPrefs.GetBool("JUTPS_ThankYouMessageWasShown") == false)
                 {
-                    ThankYouWindow.ShowWindow();
+                    //ThankYouWindow.ShowWindow();
                     EditorPrefs.SetBool("JUTPS_ThankYouMessageWasShown", true);
                 }
             }
             else if (EditorPrefs.GetBool("JUTPS_ThankYouMessageWasShown") == false)
             {
-                ThankYouWindow.ShowWindow();
+                //ThankYouWindow.ShowWindow();
                 EditorPrefs.SetBool("JUTPS_ThankYouMessageWasShown", true);
             }
 
