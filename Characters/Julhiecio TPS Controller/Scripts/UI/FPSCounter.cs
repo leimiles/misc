@@ -19,7 +19,8 @@ namespace JUTPS.Utilities
             if (FPSText != null)
             {
                 FPSText.text = GetFrameRate().ToString();
-                FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate() * 0.16667f);  // 1 / 60.0f
+                //FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate() * 0.16667f);  // 1 / 60.0f
+                FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate());
             }
         }
 
