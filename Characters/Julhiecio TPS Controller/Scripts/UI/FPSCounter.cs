@@ -9,6 +9,7 @@ namespace JUTPS.Utilities
         public float RefreshRate;
         void Start()
         {
+            Application.targetFrameRate = 60;
             InvokeRepeating("UpdateFrameRateOnScreen", 0, RefreshRate);
 
             //if that component does not have a text assigned, it will look locally for a text component.
@@ -18,10 +19,16 @@ namespace JUTPS.Utilities
         {
             if (FPSText != null)
             {
-                FPSText.text = GetFrameRate().ToString();
+                //FPSText.text = GetFrameRate().ToString();
                 //FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate() * 0.16667f);  // 1 / 60.0f
-                FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate());
+                FPSText.text = fps.ToString();
+                FPSText.color = Color.Lerp(Color.red, Color.green, fps * 0.16667f);
             }
+        }
+        int fps = 0;
+        void Update()
+        {
+            fps = (int)(1.0f / Time.deltaTime);
         }
 
         private float deltaTime = 0.0f;
