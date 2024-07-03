@@ -9,7 +9,7 @@ namespace JUTPS.Utilities
         public float RefreshRate;
         void Start()
         {
-            Application.targetFrameRate = 60;
+            //Application.targetFrameRate = 60; // test
             InvokeRepeating("UpdateFrameRateOnScreen", 0, RefreshRate);
 
             //if that component does not have a text assigned, it will look locally for a text component.
@@ -28,7 +28,7 @@ namespace JUTPS.Utilities
         int fps = 0;
         void Update()
         {
-            fps = (int)(1.0f / Time.deltaTime);
+            fps = (int)(1.0f / Time.unscaledDeltaTime);
         }
 
         private float deltaTime = 0.0f;
