@@ -22,13 +22,17 @@ namespace JUTPS.Utilities
                 FPSText.color = Color.Lerp(Color.red, Color.green, GetFrameRate() * 0.16667f);  // 1 / 60.0f
             }
         }
+
+        private float deltaTime = 0.0f;
+
         /// <summary>
         /// Returns the value of the FPS(Frames per second) at the time it is called
         /// </summary>
         /// <returns></returns>
-        public static int GetFrameRate()
+        public int GetFrameRate()
         {
-            int fps = (int)(1.0f / Time.unscaledDeltaTime);
+            deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+            int fps = (int)(1.0f / deltaTime);
             return fps;
         }
     }
