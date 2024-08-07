@@ -2,14 +2,27 @@ using UnityEngine;
 
 public class GridOverlay : MonoBehaviour
 {
-    public int rows = 7;
-    public int columns = 12;
+    public int rows = 3;
+    public int columns = 3;
     public Color lineColor = Color.white;
-    public float lineWidth = 4.0f; // 线条宽度
+    public float lineWidth = 2.0f; // 线条宽度
+    private bool showGrid = false; // 控制网格显示与隐藏的布尔值
+
+    void Update()
+    {
+        // 检查快捷键输入
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            showGrid = !showGrid;
+        }
+    }
 
     void OnGUI()
     {
-        DrawGrid();
+        if (showGrid)
+        {
+            DrawGrid();
+        }
     }
 
     void DrawGrid()
