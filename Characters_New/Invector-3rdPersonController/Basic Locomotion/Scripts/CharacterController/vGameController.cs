@@ -38,8 +38,11 @@ namespace Invector
             if (instance == null)
             {
                 instance = this;
+
                 if (dontDestroyOnLoad)
                 {
+                    // 确保对象在根级别
+                    transform.SetParent(null);
                     DontDestroyOnLoad(this.gameObject);
                 }
 
@@ -59,6 +62,8 @@ namespace Invector
 
             FindPlayer();
         }
+
+
 
         /// <summary>
         /// Show/Hide Cursor
