@@ -2203,7 +2203,6 @@ Transform:
   - {fileID: 2770566876762325690}
   - {fileID: 8664189178785448262}
   - {fileID: 9106367373116903131}
-  - {fileID: 7799470801243892041}
   - {fileID: 6426458979448697316}
   - {fileID: 3094995440972847824}
   - {fileID: 2931138237045188795}
@@ -3322,6 +3321,8 @@ MonoBehaviour:
   columns: 12
   lineColor: {r: 1, g: 1, b: 1, a: 1}
   lineWidth: 4
+  toggleGridButton: {fileID: 0}
+  buttonText: {fileID: 0}
 --- !u!224 &7580245573008138774 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8300501087907845699, guid: 8fe1f6d7ee0970247943cc71e5fbfb0a, type: 3}
@@ -3331,72 +3332,6 @@ RectTransform:
 Camera:
   m_CorrespondingSourceObject: {fileID: 8062858171343399053, guid: 8fe1f6d7ee0970247943cc71e5fbfb0a, type: 3}
   m_PrefabInstance: {fileID: 1874408859110290517}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2458825588520695634
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4735156610398278308}
-    m_Modifications:
-    - target: {fileID: 4928987269140993857, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_Name
-      value: WaterPlane
-      objectReference: {fileID: 0}
-    - target: {fileID: 4928987269140993857, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
---- !u!4 &7799470801243892041 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5630284064620994075, guid: caccbc89614269b47a8446976cbbfab6, type: 3}
-  m_PrefabInstance: {fileID: 2458825588520695634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2928330875913958089
 PrefabInstance:
