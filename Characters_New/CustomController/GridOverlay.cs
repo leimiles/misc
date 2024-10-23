@@ -42,7 +42,7 @@ public class GridOverlay : MonoBehaviour
     {
         if (buttonText != null)
         {
-            buttonText.text = showGrid ? "隐藏网格" : "显示网格";
+            buttonText.text = showGrid ? "隐藏九宫格" : "显示九宫格";
         }
     }
 
