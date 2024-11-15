@@ -57,16 +57,16 @@ namespace JUTPS
         {
             LimitHealth();
 
-            if (Health <= 0 && IsDead == false)
-            {
-                Health = 0;
-                IsDead = true;
+            // if (Health <= 0 && IsDead == false)
+            // {
+            //     Health = 0;
+            //     IsDead = true;
 
-                //Disable all damagers0
-                foreach (Damager dmg in GetComponentsInChildren<Damager>()) dmg.gameObject.SetActive(false);
+            //     //Disable all damagers0
+            //     foreach (Damager dmg in GetComponentsInChildren<Damager>()) dmg.gameObject.SetActive(false);
 
-                OnDeath.Invoke();
-            }
+            //     OnDeath.Invoke();
+            // }
 
             if (Health > 0) IsDead = false;
         }

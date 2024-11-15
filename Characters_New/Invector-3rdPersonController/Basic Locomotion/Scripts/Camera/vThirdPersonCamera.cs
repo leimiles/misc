@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Invector.vCamera
 {
-
     public class vThirdPersonCamera : MonoBehaviour
     {
         private static vThirdPersonCamera _instance;
@@ -17,15 +16,15 @@ namespace Invector.vCamera
                 {
                     _instance = GameObject.FindObjectOfType<vThirdPersonCamera>();
 
-                    //Tell unity not to destroy this object when loading a new scene!
-                    //DontDestroyOnLoad(_instance.gameObject);
+                    // 不销毁此对象以便在场景切换时保留
+                    // DontDestroyOnLoad(_instance.gameObject);
                 }
 
                 return _instance;
             }
         }
 
-        #region inspector properties    
+        #region Inspector Properties
 
         public Transform mainTarget;
         [Tooltip("Lerp speed between Camera States")]
@@ -65,7 +64,8 @@ namespace Invector.vCamera
         public Vector2 offsetMouse;
         #endregion
 
-        #region hide properties    
+
+        #region Hidden Properties
         [HideInInspector]
         public int indexList, indexLookPoint;
         [HideInInspector]
@@ -149,6 +149,35 @@ namespace Invector.vCamera
         }
         #endregion
 
+        #region Public Getters for ObservationManager
+
+        /// <summary>
+        /// 获取当前的相机缩放距离
+        /// </summary>
+        public float CurrentZoom
+        {
+            get { return currentZoom; }
+        }
+
+        /// <summary>
+        /// 获取当前的相机视野（FOV）
+        /// </summary>
+        public float CurrentFOV
+        {
+            get { return targetCamera != null ? targetCamera.fieldOfView : 60f; } // 默认FOV为60，如果没有找到相机
+        }
+
+        /// <summary>
+        /// 获取当前的相机组件
+        /// </summary>
+        public Camera TargetCamera
+        {
+            get { return targetCamera; }
+        }
+
+        #endregion
+
+
         protected Rigidbody _selfRigidbody;
         public Rigidbody selfRigidbody
         {
@@ -162,8 +191,8 @@ namespace Invector.vCamera
                 }
                 return _selfRigidbody;
             }
-
         }
+
         /// <summary>
         /// Lock camera angle based to the <seealso cref="currentTarget"/>. if you need just to reset angle use <seealso cref="ResetAngle"/>
         /// </summary>
@@ -175,7 +204,6 @@ namespace Invector.vCamera
             }
             set
             {
-
                 lockCamera = value;
             }
         }
@@ -195,7 +223,6 @@ namespace Invector.vCamera
 
         protected virtual void Start()
         {
-
             Init();
         }
 
@@ -275,7 +302,6 @@ namespace Invector.vCamera
 
         public virtual void FixedUpdate()
         {
-
             if (mainTarget == null || targetLookAt == null || currentState == null || lerpState == null || !isInit || isFreezed)
             {
                 return;
@@ -297,7 +323,7 @@ namespace Invector.vCamera
 
         /// <summary>
         /// Set a <seealso cref="lockTarget"/> to the  camera  auto rotate to look to.
-        /// </summary>   
+        /// </summary>
         public virtual void SetLockTarget(Transform lockTarget)
         {
             if (this.lockTarget != null && this.lockTarget == lockTarget)
@@ -397,7 +423,7 @@ namespace Invector.vCamera
         }
 
         /// <summary>
-        /// Reset the camera angle back t
+        /// Reset the camera angle back
         /// </summary>
         public virtual void ResetAngleWithoutSmooth()
         {
@@ -406,7 +432,7 @@ namespace Invector.vCamera
             targetLookAt.forward = currentTarget.forward;
         }
 
-        /// <summary>    
+        /// <summary>
         /// Convert a point in the screen in a Ray for the world
         /// </summary>
         /// <param name="Point"></param>
@@ -419,7 +445,7 @@ namespace Invector.vCamera
         /// <summary>
         /// Change CameraState
         /// </summary>
-        /// <param name="stateName"></param>       
+        /// <param name="stateName"></param>
         public virtual void ChangeState(string stateName)
         {
             ChangeState(stateName, true);
@@ -521,7 +547,7 @@ namespace Invector.vCamera
         }
 
         /// <summary>
-        /// Change State using look at point if the cameraMode is FixedPoint  
+        /// Change State using look at point if the cameraMode is FixedPoint
         /// </summary>
         /// <param name="stateName"></param>
         /// <param name="pointName"></param>
@@ -572,6 +598,13 @@ namespace Invector.vCamera
 
                 indexList = CameraStateList.tpCameraStates.IndexOf(state);
                 currentZoom = state.defaultDistance;
+
+                if (currentState.cameraMode == TPCameraMode.FixedAngle)
+                {
+                    mouseX = currentState.fixedAngle.x;
+                    mouseY = currentState.fixedAngle.y;
+                }
+
                 currentState.fixedAngle = new Vector3(mouseX, mouseY);
                 indexLookPoint = 0;
             }
@@ -645,8 +678,8 @@ namespace Invector.vCamera
             isFreezed = false;
         }
 
-        /// <summary>    
-        /// Zoom behavior 
+        /// <summary>
+        /// Zoom behavior
         /// </summary>
         /// <param name="scroolValue"></param>
         /// <param name="zoomSpeed"></param>
@@ -676,10 +709,10 @@ namespace Invector.vCamera
 
             if (!currentState.cameraMode.Equals(TPCameraMode.FixedAngle))
             {
-                // lock into a target            
+                // lock into a target
                 if (!lockTarget)
                 {
-                    // free rotation 
+                    // free rotation
                     mouseX += x * (vInput.instance.inputDevice == InputDevice.Joystick ? currentState.xMouseSensitivity * joystickSensitivity : currentState.xMouseSensitivity);
                     mouseY -= y * (vInput.instance.inputDevice == InputDevice.Joystick ? currentState.yMouseSensitivity * joystickSensitivity : currentState.yMouseSensitivity);
 
@@ -701,7 +734,7 @@ namespace Invector.vCamera
                         mouseY = vExtensions.ClampAngle(mouseY, lerpState.yMinLimit, lerpState.yMaxLimit);
                         mouseX = vExtensions.ClampAngle(mouseX, lerpState.xMinLimit, lerpState.xMaxLimit);
                     }
-                    else if (LockCamera || !isAlignedWithTarget && autoBehindTarget)
+                    else if (LockCamera || (!isAlignedWithTarget && autoBehindTarget))
                     {
                         if (autoBehindTarget)
                             smoothCameraRotation = Mathf.Lerp(smoothCameraRotation, behindTargetSmoothRotation, 6f * Time.fixedDeltaTime);
@@ -731,7 +764,7 @@ namespace Invector.vCamera
         }
 
         /// <summary>
-        /// Switch Camera Right 
+        /// Switch Camera Right
         /// </summary>
         /// <param name="value"></param>
         public virtual void SwitchRight(bool value = false)
@@ -743,7 +776,7 @@ namespace Invector.vCamera
         {
             if (currentState.cameraMode.Equals(TPCameraMode.FixedAngle) && lockTarget)
             {
-                return;   // check if angle of camera is fixed         
+                return;   // check if angle of camera is fixed
             }
 
             var collider = lockTarget.GetComponent<Collider>();                                  // collider to get center of bounds
@@ -784,8 +817,9 @@ namespace Invector.vCamera
 
         public virtual void CameraMovement(bool forceUpdate = false)
         {
-            if (currentTarget == null || targetCamera == null || (!firstStateIsInit && !forceUpdate))
+            if (currentTarget == null || targetCamera == null || (!firstStateIsInit && !forceUpdate) || isObservationMode)
             {
+                // 如果处于观测模式，则不执行正常的相机移动逻辑
                 return;
             }
 
@@ -817,7 +851,7 @@ namespace Invector.vCamera
 
             camDir = camDir.normalized;
 
-            var targetPos = new Vector3(currentTarget.position.x, currentTarget.position.y, currentTarget.position.z) + currentTarget.transform.up * offSetPlayerPivot;
+            var targetPos = new Vector3(currentTarget.position.x, currentTarget.position.y + offSetPlayerPivot, currentTarget.position.z) + currentTarget.transform.up * offSetPlayerPivot;
             currentTargetPos = targetPos;
             desired_cPos = targetPos + currentTarget.transform.up * currentState.height;
             current_cPos = firstUpdated ? targetPos + currentTarget.transform.up * currentHeight : Vector3.SmoothDamp(current_cPos, targetPos + currentTarget.transform.up * currentHeight, ref cameraVelocityDamp, lerpState.smoothDamp * Time.fixedDeltaTime);
@@ -826,7 +860,7 @@ namespace Invector.vCamera
 
             ClipPlanePoints planePoints = targetCamera.NearClipPlanePoints(current_cPos + (camDir * (distance)), clipPlaneMargin);
             ClipPlanePoints oldPoints = targetCamera.NearClipPlanePoints(desired_cPos + (camDir * currentZoom), clipPlaneMargin);
-            //Check if Height is not blocked 
+            //Check if Height is not blocked
             if (Physics.SphereCast(targetPos, checkHeightRadius, currentTarget.transform.up, out hitInfo, currentState.cullingHeight + 0.2f, cullingLayer))
             {
                 var t = hitInfo.distance - 0.2f;
@@ -838,7 +872,7 @@ namespace Invector.vCamera
             {
                 cullingHeight = useSmooth ? Mathf.Lerp(cullingHeight, currentState.cullingHeight, smoothBetweenState * Time.fixedDeltaTime) : currentState.cullingHeight;
             }
-            //Check if desired target position is not blocked            
+            //Check if desired target position is not blocked
             if (CullingRayCast(desired_cPos, oldPoints, out hitInfo, currentZoom + 0.2f, cullingLayer, Color.blue))
             {
                 var dist = hitInfo.distance;
@@ -1009,5 +1043,59 @@ namespace Invector.vCamera
 
             return hitInfo.collider && value;
         }
+
+        #region 新增部分：支持ObservationManager的相机状态切换
+
+        // 新增一个标志，用于指示相机是否处于观测模式
+        private bool isObservationMode = false;
+
+        /// <summary>
+        /// 新增一个方法，用于ObservationManager设置相机位置和旋转
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <param name="distance"></param>
+        /// <param name="fov"></param>
+        public void ApplyObservationCameraState(Vector3 position, Quaternion rotation, float distance, float fov)
+        {
+            // 设置观测模式标志
+            isObservationMode = true;
+
+            // 停止当前的平滑过渡
+            StopAllCoroutines();
+
+            // 立即设置相机位置和旋转
+            transform.position = position;
+            transform.rotation = rotation;
+
+            // 设置相机的距离和视野
+            currentZoom = distance;
+            targetCamera.fieldOfView = fov;
+
+            // 更新内部状态
+            currentTargetPos = position;
+            desired_cPos = position; // 根据需要调整
+            current_cPos = position;
+
+            Debug.Log($"应用观测相机状态：Position={position}, Rotation={rotation}, Distance={distance}, FOV={fov}");
+        }
+
+        /// <summary>
+        /// 新增一个方法，用于退出观测模式并恢复相机控制
+        /// </summary>
+        public void ExitObservationMode()
+        {
+            if (isObservationMode)
+            {
+                isObservationMode = false;
+
+                // 重新初始化相机以恢复正常控制
+                Init();
+
+                Debug.Log("退出观测模式，恢复相机控制。");
+            }
+        }
+
+        #endregion
     }
 }
